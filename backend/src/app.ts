@@ -86,6 +86,8 @@ app.all("*", (req, res) => {
   }
 });
 
+const PORT = process.env.PORT || 4000;
+
 mongoose.connection.once("open", async () => {
-  app.listen(process.env.PORT);
+  app.listen(PORT);
 });
