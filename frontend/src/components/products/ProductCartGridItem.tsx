@@ -24,7 +24,7 @@ const ProductCartGridItem = ({ cartItem }: Props) => {
       {/* Image */}
       <div className="w-28 h-28 shrink-0 overflow-hidden rounded-md border border-gray-200">
         <img
-          src={`http://localhost:4000/images/dummyImage.png`}
+          src={`${import.meta.env.VITE_BASE_URL}/images/${cartItem.images[0].url}`}
           alt={cartItem.title}
           className="w-full h-full object-cover object-center"
         />
@@ -100,92 +100,6 @@ const ProductCartGridItem = ({ cartItem }: Props) => {
         </button>
       </div>
     </div>
-
-    // <div className="rounded-lg border border-gray-400 p-6 shadow-sm md:px-6 md:py-1">
-    //   <div className="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
-    //     <a
-    //       href="#"
-    //       className="shrink-0 md:order-1 flex items-center justify-center"
-    //     >
-    //       <img
-    //         className="h-32 w-32 object-cover object-center"
-    //         src={`http://localhost:4000/images/dummyImage.png`}
-    //         alt="imac image"
-    //       />
-    //     </a>
-    //
-    //     <div className="flex items-center justify-between md:order-3 md:justify-end">
-    //       <div className="flex items-center">
-    //         <button
-    //           type="button"
-    //           id="decrement-button"
-    //           onClick={() => removeFromCart(cartItem._id)}
-    //           data-input-counter-decrement="counter-input"
-    //           className="items-center justify-center text-blue-500 hover:text-blue-700"
-    //         >
-    //           <CircleMinusIcon className="w-6 h-6" />
-    //         </button>
-    //         <input
-    //           type="text"
-    //           id="counter-input"
-    //           className="w-10 shrink-0 border-0 bg-transparent text-center text-sm font-medium text-gray-900 focus:outline-none focus:ring-0"
-    //           placeholder=""
-    //           value={cartItem.quantity}
-    //           required
-    //         />
-    //         <button
-    //           type="button"
-    //           id="increment-button"
-    //           onClick={() => addToCart(cartItem._id)}
-    //           data-input-counter-increment="counter-input"
-    //           className="items-center justify-center text-blue-500 hover:text-blue-700"
-    //         >
-    //           <CirclePlusIcon className="w-6 h-6" />
-    //         </button>
-    //       </div>
-    //       <div className="text-end md:order-4 md:w-32">
-    //         <p className="text-base font-bold text-gray-900">
-    //           ${cartItem.price}
-    //         </p>
-    //       </div>
-    //     </div>
-    //
-    //     <div className="w-full min-w-0 flex-1 space-y-4 md:order-2 md:max-w-md">
-    //       <a
-    //         href="#"
-    //         className="text-base font-medium text-gray-900 hover:underline "
-    //       >
-    //         {cartItem.title}
-    //       </a>
-    //
-    //       <div className="flex items-center gap-4">
-    //         <button
-    //           type="button"
-    //           className="inline-flex items-center transition-all duration-500 ease-in-out group"
-    //           onClick={() => toggleFavorite(cartItem._id)}
-    //         >
-    //           <HeartIcon
-    //             className={`w-6 h-6 transform transition-transform duration-500 ${isFavorite ? "text-pink-400 scale-110" : "text-gray-500 scale-100"}`}
-    //           />
-    //           <span
-    //             className={`text-sm font-medium ml-2 transition-colors duration-500 ${isFavorite ? "text-teal-500" : "text-gray-600"} group-hover:text-teal-400`}
-    //           >
-    //             {isFavorite ? "Your Favorite" : "Add to FavoritesPage"}
-    //           </span>
-    //         </button>
-    //
-    //         <button
-    //           type="button"
-    //           onClick={() => deleteFromCart(cartItem._id)}
-    //           className="inline-flex items-center text-sm font-medium text-red-600 hover:underline"
-    //         >
-    //           <CloseIcon className="w-6 h-6" />
-    //           Remove
-    //         </button>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </div>
   );
 };
 

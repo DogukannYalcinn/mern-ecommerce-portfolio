@@ -3,7 +3,7 @@ const LoaderScreen = () => {
     <div className="fixed inset-0 z-50 bg-gray-800 backdrop-blur-sm flex items-center justify-center">
       <div className="flex flex-col items-center gap-4  p-8 rounded-lg">
         <img
-          src="http://localhost:4000/images/plasarf-logo-200x58.png"
+          src="/images/dummyLogo.png"
           alt="Loading"
           className="w-64 h-auto animate-pulse"
         />

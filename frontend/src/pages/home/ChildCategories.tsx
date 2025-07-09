@@ -27,7 +27,7 @@ const ChildCategories = () => {
               >
                 <div className="aspect-square w-36">
                   <img
-                    src={`http://localhost:4000/images/${category.imageUrl}`}
+                    src={`${import.meta.env.VITE_BASE_URL}/images/${category.imageUrl}`}
                     alt={category.name}
                     className="w-full h-full object-contain hover:scale-105 transition-transform duration-500"
                   />
@@ -42,7 +42,7 @@ const ChildCategories = () => {
           {childCategories.length > 10 && (
             <button
               onClick={() => setShowMore((prev) => !prev)}
-              className="self-end text-lg font-medium text-blue-500 hover:underline transition-all"
+              className="self-end text-lg font-medium text-blue-500 hover:underline transition-all p-4"
             >
               {showMore ? "Show less" : "Show more"}
             </button>

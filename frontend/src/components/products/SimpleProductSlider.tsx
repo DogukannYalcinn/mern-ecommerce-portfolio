@@ -117,7 +117,7 @@ const SimpleProductSlider = ({ products }: Props) => {
                             ? "group-hover:opacity-0 group-hover:scale-125"
                             : "group-hover:scale-110"
                         }`}
-                        src={`http://localhost:4000/images/${product.images[0].url}`}
+                        src={`${import.meta.env.VITE_BASE_URL}/images/${product.images[0].url}`}
                         alt="Product Image"
                       />
                     </NavLink>
@@ -128,7 +128,7 @@ const SimpleProductSlider = ({ products }: Props) => {
                         <NavLink to={`/products/${product.slug}`}>
                           <img
                             className="w-full h-full object-cover absolute transition-all duration-1000 ease-in-out scale-75 opacity-0 group-hover:opacity-100 group-hover:scale-100"
-                            src={`http://localhost:4000/images/${product.images[1].url}`}
+                            src={`${import.meta.env.VITE_BASE_URL}/images/${product.images[1].url}`}
                             alt="Product Hover Image"
                           />
                         </NavLink>

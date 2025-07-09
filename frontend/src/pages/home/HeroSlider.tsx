@@ -21,8 +21,8 @@ const HeroSlider = () => {
           {sliders.map((slider, index) => (
             <img
               key={slider._id}
-              src={`http://localhost:4000/images/${slider.imageUrl}`}
-              alt={slider.description || "Slider image"}
+              src={`${import.meta.env.VITE_BASE_URL}/images/${slider.imageUrl}`}
+              alt={slider.title || "Slider image"}
               className={`absolute inset-0 w-full h-[70vh] object-cover object-[85%_center] md:object-[95%_center] -z-10
                               ${currentIndex === index ? "animate-slideInLeft z-0" : "animate-slideOutRight"}
                             `}

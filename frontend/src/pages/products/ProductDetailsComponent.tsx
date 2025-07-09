@@ -95,7 +95,7 @@ const ProductDetailsComponent = ({
                     <img
                       onClick={() => setImageIndex(index)}
                       className="h-20 w-20 object-cover rounded-md cursor-pointer"
-                      src={`http://localhost:4000/images/${image.url}`}
+                      src={`${import.meta.env.VITE_BASE_URL}/images/${image.url}`}
                       alt={`Product Thumbnail ${index + 1}`}
                     />
                   </div>
@@ -106,7 +106,7 @@ const ProductDetailsComponent = ({
               <div className="flex-1 flex justify-center items-center">
                 <div className="relative w-full max-w-lg aspect-square overflow-hidden rounded-md border">
                   <img
-                    src={`http://localhost:4000/images/${product.images[imageIndex].url}`}
+                    src={`${import.meta.env.VITE_BASE_URL}/images/${product.images[imageIndex].url}`}
                     alt="Selected Product"
                     className="w-full h-full object-contain transition duration-500"
                   />

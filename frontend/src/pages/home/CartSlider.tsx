@@ -65,7 +65,7 @@ const CartSlider = () => {
                         )}
                         <img
                           className="h-full object-contain transition-transform duration-500 group-hover:scale-105 group-hover:-rotate-1 group-hover:shadow-md"
-                          src={`http://localhost:4000/images/${product.images?.[0]?.url}`}
+                          src={`${import.meta.env.VITE_BASE_URL}/images/${product.images?.[0]?.url}`}
                           alt={product.title}
                         />
                       </div>

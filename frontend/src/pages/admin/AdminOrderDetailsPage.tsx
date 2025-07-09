@@ -211,7 +211,7 @@ const AdminOrderDetailsPage = () => {
                     >
                       <div className="flex items-center gap-4">
                         <img
-                          src={`http://localhost:4000/images/${item.product?.images?.[0]?.url || "no-image.png"}`}
+                          src={`${import.meta.env.VITE_BASE_URL}/images/${item.product?.images?.[0]?.url || "no-image.png"}`}
                           alt={item.product?.title || "Deleted Product"}
                           className="w-16 h-16 object-cover rounded-lg"
                         />

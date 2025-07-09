@@ -28,7 +28,7 @@ const Announcement = () => {
     <div className="relative overflow-hidden py-2 bg-gray-100">
       {/* Background Image */}
       <img
-        src={`http://localhost:4000/images/${announcement.backgroundImage}`}
+        src={`${import.meta.env.VITE_BASE_URL}/images/${announcement.backgroundImage}`}
         alt="announcement background"
         className="absolute inset-0 w-full h-full object-cover pointer-events-none"
       />

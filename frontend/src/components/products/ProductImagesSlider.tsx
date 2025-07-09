@@ -16,7 +16,7 @@ const ProductImagesSlider = ({ images }: Props) => {
         >
           <img
             className="h-full w-full object-contain"
-            src={`http://localhost:4000/images/${image.url}`}
+            src={`${import.meta.env.VITE_BASE_URL}/images/${image.url}`}
             alt={`Product Image ${index + 1}`}
           />
         </div>

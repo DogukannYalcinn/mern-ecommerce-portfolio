@@ -195,9 +195,6 @@ const AdminProductEditPage = () => {
           </NavLink>
           <h1 className="text-2xl font-bold text-gray-500">Back to Products</h1>
         </div>
-        {/*<div className="mb-6">*/}
-        {/*  <h1 className="text-2xl font-bold text-gray-800">Edit Product</h1>*/}
-        {/*</div>*/}
         <div className="flex flex-col md:flex-row gap-8">
           {/* Images */}
           <div className="flex gap-4">
@@ -205,7 +202,7 @@ const AdminProductEditPage = () => {
               {state.product.images.map((img, index) => (
                 <img
                   key={index}
-                  src={`http://localhost:4000/images/${img.url}`}
+                  src={`${import.meta.env.VITE_BASE_URL}/images/${img.url}`}
                   alt={state.product?.title}
                   className="w-28 h-28 object-cover rounded cursor-pointer border border-gray-300 hover:border-blue-400 shadow-sm"
                   onClick={() => setSelectedPreviewImage(img._id)}
@@ -217,7 +214,7 @@ const AdminProductEditPage = () => {
               {state.previewImage && (
                 <div className="relative shadow-sm">
                   <img
-                    src={`http://localhost:4000/images/${state.previewImage.url}`}
+                    src={`${import.meta.env.VITE_BASE_URL}/images/${state.previewImage.url}`}
                     alt={state.product.title}
                     className="w-full max-h-[590px] object-contain rounded-lg border"
                   />

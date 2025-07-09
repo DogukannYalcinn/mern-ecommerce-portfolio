@@ -60,7 +60,7 @@ const ProductCartQuickView = ({ product }: Props) => {
                   className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ease-in-out ${currentIndex === index ? " opacity-100" : " opacity-0"} border-2 border-gray-200 rounded-lg`}
                 >
                   <img
-                    src={`http://localhost:4000/images/${image.url}`}
+                    src={`${import.meta.env.VITE_BASE_URL}/images/${image.url}`}
                     alt={product.title}
                     className="max-w-lg max-h-full object-contain"
                   />
@@ -86,7 +86,7 @@ const ProductCartQuickView = ({ product }: Props) => {
                 {product.images.map((img, index) => (
                   <img
                     key={img._id}
-                    src={`http://localhost:4000/images/${img.url}`}
+                    src={`${import.meta.env.VITE_BASE_URL}/images/${img.url}`}
                     alt={`Image ${index}`}
                     onClick={() => handleThumbnailClick(index)}
                     className={`w-32 h-32 md:w-36 md:h-36 lg:w-48 lg:h-48 object-cover rounded cursor-pointer 

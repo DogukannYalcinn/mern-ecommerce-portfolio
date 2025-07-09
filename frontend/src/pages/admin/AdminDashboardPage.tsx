@@ -267,7 +267,7 @@ const AdminDashboardPage = () => {
                   {/* Image */}
                   <img
                     className="w-24 h-24 object-contain mx-auto mb-2"
-                    src={`http://localhost:4000/images/${product.images[0].url}`}
+                    src={`${import.meta.env.VITE_BASE_URL}/images/${product.images[0].url}`}
                     alt={product.title}
                   />
 

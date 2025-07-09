@@ -155,7 +155,7 @@ const CategoryManager = ({ setIsLoading }: AdminGeneralSettingProps) => {
               Current Image
             </label>
             <img
-              src={`http://localhost:4000/images/${category.imageUrl}`}
+              src={`${import.meta.env.VITE_BASE_URL}/images/${category.imageUrl}`}
               alt="Category"
               className="w-32 h-32 object-contain border rounded-md"
             />
@@ -395,7 +395,7 @@ const CategoryManager = ({ setIsLoading }: AdminGeneralSettingProps) => {
               <div className="flex items-center justify-between p-4 cursor-pointer transition-all hover:bg-blue-50 rounded-t-xl">
                 <div className="flex items-center gap-2 w-full">
                   <img
-                    src={`http://localhost:4000/images/${category.imageUrl}`}
+                    src={`${import.meta.env.VITE_BASE_URL}/images/${category.imageUrl}`}
                     alt={category.name}
                     className="h-8 w-8  md:h-12 md:w-12 object-cover"
                   />
@@ -459,7 +459,7 @@ const CategoryManager = ({ setIsLoading }: AdminGeneralSettingProps) => {
                   >
                     <div className="flex gap-2 items-center">
                       <img
-                        src={`http://localhost:4000/images/${subCategory.imageUrl}`}
+                        src={`${import.meta.env.VITE_BASE_URL}/images/${subCategory.imageUrl}`}
                         alt={category.name}
                         className="h-8 w-8  md:h-12 md:w-12 object-cover"
                       />

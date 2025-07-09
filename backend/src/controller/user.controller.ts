@@ -221,31 +221,6 @@ export const refreshAccessToken = async (
           return res.sendStatus(401);
         }
         const accessToken = signAccessToken(existUser._id as string);
-        // const accessToken = jwt.sign(
-        //     {
-        //         UserInfo: {
-        //             id:existUser._id,
-        //         },
-        //     },
-        //     process.env.ACCESS_TOKEN_SECRET as string,
-        //     { expiresIn: "15m" },
-        // );
-        //
-        // const newRefreshToken = jwt.sign(
-        //     {
-        //         UserInfo: {
-        //             id :existUser._id
-        //         },
-        //     },
-        //     process.env.REFRESH_TOKEN_SECRET as string,
-        //     { expiresIn: "1d" },
-        // );
-        // res.cookie("jwt", refreshToken, {
-        //   httpOnly: true,
-        //   sameSite: "none",
-        //   secure: true,
-        //   maxAge: 24 * 60 * 60 * 1000,
-        // });
         res.status(200).json({ accessToken });
       },
     );
@@ -593,7 +568,6 @@ export const addPaymentMethod = async (
   const cardNumber = req.body.cardNumber as string;
   const cardHolderName = req.body.cardHolderName as string;
   const paypalEmail = req.body.paypalEmail as string;
-  // const { method, cardNumber, cardHolderName, paypalEmail } = req.body ;
   const userId = req.authenticatedUserId;
 
   try {

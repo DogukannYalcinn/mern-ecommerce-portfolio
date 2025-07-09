@@ -41,7 +41,7 @@ const OnSaleDropdown = () => {
                   %{product.discountedRatio.toFixed(1)}
                 </div>
                 <img
-                  src={`http://localhost:4000/images/${product.images[0].url}`}
+                  src={`${import.meta.env.VITE_BASE_URL}/images/${product.images[0].url}`}
                   alt={product.title}
                   className={`w-32 h-32 mx-auto object-cover transition-transform duration-500 group-hover:scale-110 group-hover:rotate-2`}
                 />

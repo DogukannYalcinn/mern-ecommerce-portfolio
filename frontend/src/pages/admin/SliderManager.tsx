@@ -259,7 +259,7 @@ const SliderManager = ({ setIsLoading }: AdminGeneralSettingProps) => {
                 Current Image
               </label>
               <img
-                src={`http://localhost:4000/images/${state.selectedSlider.imageUrl}`}
+                src={`${import.meta.env.VITE_BASE_URL}/images/${state.selectedSlider.imageUrl}`}
                 alt="HeroSlider"
                 className="w-full h-auto object-contain border rounded-md"
               />
@@ -324,7 +324,7 @@ const SliderManager = ({ setIsLoading }: AdminGeneralSettingProps) => {
             {/* Image Top Full Width */}
             <div className="w-full h-44 sm:h-52 md:h-60">
               <img
-                src={`http://localhost:4000/images/${slider.imageUrl}`}
+                src={`${import.meta.env.VITE_BASE_URL}/images/${slider.imageUrl}`}
                 alt={slider.title}
                 className="w-full h-full object-cover"
               />

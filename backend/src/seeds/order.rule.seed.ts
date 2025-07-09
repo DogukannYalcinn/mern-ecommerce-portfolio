@@ -53,7 +53,7 @@ const orderRuleSeed = async () => {
     ],
     giftWrapFee: 10,
     taxRate: 0.13,
-    freeShippingFee: 5000,
+    freeShippingThreshold: 5000,
   };
   await OrderRules.create(dummyOrderRules);
   console.log("Order Rule seeded successfully.");

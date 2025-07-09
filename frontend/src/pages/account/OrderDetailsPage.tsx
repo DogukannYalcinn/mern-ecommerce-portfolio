@@ -88,7 +88,7 @@ const OrderDetailsPage = () => {
             className="flex items-center gap-4 bg-white p-2 rounded shadow-sm border border-gray-100"
           >
             <img
-              src={`http://localhost:4000/images/${item.product.images[0].url}`}
+              src={`${import.meta.env.VITE_BASE_URL}/images/${item.product.images[0].url}`}
               alt={item.product.title}
               className="w-16 h-16 rounded object-cover border"
             />

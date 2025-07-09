@@ -26,7 +26,7 @@ const HeroBanner = () => {
               >
                 <div className="flex items-center justify-center h-full">
                   <img
-                    src={`http://localhost:4000/images/${category.imageUrl}`}
+                    src={`${import.meta.env.VITE_BASE_URL}/images/${category.imageUrl}`}
                     alt={category.name}
                     className="h-full object-contain transition-transform duration-300 group-hover:scale-105"
                   />

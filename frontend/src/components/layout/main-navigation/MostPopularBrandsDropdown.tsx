@@ -22,7 +22,7 @@ const MostPopularBrandsDropdown = () => {
             </NavLink>
             <div className="relative w-auto h-full">
               <img
-                src={`http://localhost:4000/images/${category.imageUrl}`}
+                src={`${import.meta.env.VITE_BASE_URL}/images/${category.imageUrl}`}
                 alt={category.name}
                 className="w-auto max-h-80 object-cover rounded-lg cursor-pointer transition-transform duration-500 group-hover:scale-105 group-hover:rotate-x-6"
                 style={{ transformOrigin: "center", perspective: "1000px" }}
@@ -62,7 +62,7 @@ const MostPopularBrandsDropdown = () => {
             </p>
             <div className="relative w-auto h-full">
               <img
-                src={`http://localhost:4000/images/${category.imageUrl}`}
+                src={`${import.meta.env.VITE_BASE_URL}/images/${category.imageUrl}`}
                 alt={category.name}
                 className="w-auto max-h-80 object-cover rounded-lg cursor-pointer transition-transform duration-500 group-hover:scale-105 group-hover:rotate-x-6"
                 style={{ transformOrigin: "center", perspective: "1000px" }}

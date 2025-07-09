@@ -222,7 +222,7 @@ const AnnouncementManager = ({ setIsLoading }: AdminGeneralSettingProps) => {
                   Current Background
                 </label>
                 <img
-                  src={`http://localhost:4000/images/${state.selectedAnnouncement.backgroundImage}`}
+                  src={`${import.meta.env.VITE_BASE_URL}/images/${state.selectedAnnouncement.backgroundImage}`}
                   alt="Announcement"
                   className="w-full h-auto object-contain border rounded-md"
                 />
@@ -278,7 +278,7 @@ const AnnouncementManager = ({ setIsLoading }: AdminGeneralSettingProps) => {
             >
               {/* Background Image */}
               <img
-                src={`http://localhost:4000/images/${announcement.backgroundImage}`}
+                src={`${import.meta.env.VITE_BASE_URL}/images/${announcement.backgroundImage}`}
                 alt="Announcement Background"
                 className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${
                   announcement.isActive ? "opacity-100" : "opacity-30"

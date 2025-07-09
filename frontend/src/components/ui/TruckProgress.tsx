@@ -9,6 +9,9 @@ const TruckProgress = () => {
     (cartSummary.subtotal / state.orderRules.freeShippingThreshold) * 100,
     100,
   );
+
+  console.log(cartSummary);
+  console.log(state.orderRules);
   return (
     <div className="flex flex-col flex-shrink-0 pt-4 overflow-hidden">
       <div className="relative w-full mt-4">

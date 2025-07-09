@@ -19,7 +19,7 @@ const CategoryDropdown = () => {
             <NavLink to={`products?categorySlugs=${category.slug}`}>
               <img
                 className="h-32 w-32 object-cover cursor-pointer hover:scale-110 transition-transform duration-500"
-                src={`http://localhost:4000/images/${category.imageUrl}`}
+                src={`${import.meta.env.VITE_BASE_URL}/images/${category.imageUrl}`}
                 alt=""
               />
             </NavLink>

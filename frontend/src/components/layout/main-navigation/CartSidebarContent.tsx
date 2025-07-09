@@ -70,7 +70,7 @@ const CartSidebarContent = () => {
                 <li className="flex gap-2 py-4" key={product._id}>
                   <div className="w-1/3">
                     <img
-                      src={`http://localhost:4000/images/${product.images[0].url}`}
+                      src={`${import.meta.env.VITE_BASE_URL}/images/${product.images[0].url}`}
                       alt={product.title}
                       className="w-full h-auto object-cover"
                     />

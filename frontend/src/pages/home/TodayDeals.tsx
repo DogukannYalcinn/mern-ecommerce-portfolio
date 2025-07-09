@@ -119,7 +119,7 @@ const TodayDeals = () => {
                       <div className="relative w-40 h-40 md:w-48 md:h-48 lg:w-52 lg:h-52 mx-auto">
                         <img
                           className="w-full h-full object-cover rounded"
-                          src={`http://localhost:4000/images/${product.images[0].url}`}
+                          src={`${import.meta.env.VITE_BASE_URL}/images/${product.images[0].url}`}
                           alt="product image"
                         />
 

@@ -148,12 +148,6 @@ export const getSearchProducts = async (
       .map((t) => t.trim())
       .filter((t) => t !== "") || [];
 
-  // if (searchTerms.length === 0) {
-  //   return res
-  //     .status(400)
-  //     .json({ message: "At least one search term is required." });
-  // }
-
   const limit = parseInt(req.query.limit as string) || 20;
   const page = parseInt(req.query.page as string) || 1;
   const skip = (page - 1) * limit;
@@ -167,13 +161,6 @@ export const getSearchProducts = async (
       sort = { score: { $meta: "textScore" } };
     }
   }
-  // const query: Record<string, any> = {
-  //   $text: { $search: searchTerms.join(" ") },
-  // };
-
-  // let sort: Record<string, any> = {
-  //   score: { $meta: "textScore" },
-  // };
 
   switch (filter) {
     case "latest":
@@ -214,7 +201,7 @@ export const getSearchProducts = async (
       totalCount,
     });
   } catch (err) {
-    console.error("SearchProductsPage error:", err);
+    console.error("SearchProducts error:", err);
     next(err);
   }
 };

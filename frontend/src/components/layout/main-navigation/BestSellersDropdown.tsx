@@ -31,7 +31,7 @@ const BestSellersDropdown = () => {
               className={`group p-2 xl:p-4 flex flex-col gap-2 rounded transition-shadow duration-300`}
               style={{
                 ...(index % 2 === 0 && {
-                  backgroundImage: `url("http://localhost:5173/images/cart-bg-abstract.jpg")`,
+                  backgroundImage: `url("/images/cart-bg-abstract.jpg")`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                 }),
@@ -42,7 +42,7 @@ const BestSellersDropdown = () => {
             >
               <div className="relative overflow-hidden rounded-lg transform group-hover:perspective-1000">
                 <img
-                  src={`http://localhost:4000/images/${product.images[0].url}`}
+                  src={`${import.meta.env.VITE_BASE_URL}/images/${product.images[0].url}`}
                   alt={product.title}
                   className={`w-32 h-32 mx-auto object-cover transition-transform duration-500 group-hover:scale-105 
                                             ${index % 2 === 0 ? "group-hover:rotate-2" : "group-hover:-rotate-2"} 
