@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:4000/api";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL as string;
 
 const axiosInstance = axios.create({
   baseURL: API_BASE_URL,
@@ -17,26 +17,5 @@ export const setAuthToken = (token: string | null) => {
     delete axiosInstance.defaults.headers.common["Authorization"];
   }
 };
-
-// axiosInstance.interceptors.request.use((config) => {
-//     if (accessToken) {
-//         config.headers["Authorization"] = `Bearer ${accessToken}`;
-//     }
-//     return config;
-// });
-
-// axiosInstance.interceptors.response.use(
-//     (response) => response,
-//     async (error) => {
-//         const navigate = useNavigate();
-//         const originalRequest = error.config;
-//         if (error.response.status === 401 && !originalRequest._retry) {
-//             originalRequest._retry = true;
-//         }
-//         navigate("/login");
-
-//         return Promise.reject(error);
-//     }
-// );
 
 export default axiosInstance;
