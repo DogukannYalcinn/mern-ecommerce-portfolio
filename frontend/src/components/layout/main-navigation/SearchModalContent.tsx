@@ -143,7 +143,7 @@ const SearchModalContent = () => {
                   <NavLink to={`/products/${product.slug}`}>
                     {/* Product Image (larger) */}
                     <img
-                      className="h-32 w-32  object-cover rounded-lg transition-transform duration-300 hover:scale-105"
+                      className="h-32 w-32  object-contain rounded-lg transition-transform duration-300 hover:scale-105"
                       src={`${import.meta.env.VITE_BASE_URL}/images/${product.images[0].url}`}
                       alt={product.title}
                     />

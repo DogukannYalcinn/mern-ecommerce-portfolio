@@ -122,7 +122,7 @@ const AdvanceProductSlider = ({ products, onQuickLook }: Props) => {
               <div className="h-72">
                 <ProductImagesSlider images={product.images} />
               </div>
-              <div className="flex items-center">
+              <div className="flex items-center mt-8">
                 {isOnSaleProduct && (
                   <span className="me-2 rounded bg-pink-100 px-2.5 py-0.5 font-medium text-pink-800 ">
                     {" "}
@@ -130,7 +130,7 @@ const AdvanceProductSlider = ({ products, onQuickLook }: Props) => {
                   </span>
                 )}
                 <div className="ml-auto">
-                  <div className="relative group inline-block">
+                  <div className="relative group inline-block ">
                     <button
                       onClick={() => onQuickLook(product._id)}
                       type="button"
@@ -139,7 +139,7 @@ const AdvanceProductSlider = ({ products, onQuickLook }: Props) => {
                       <span className="sr-only">Quick look</span>
                       <EyeIcon className="h-6 w-6" />
                     </button>
-                    <div className="absolute bottom-full left-1/2 mb-2 hidden w-max -translate-x-1/2 rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white shadow-md group-hover:block">
+                    <div className="absolute bottom-full left-1/4 mb-2 hidden w-max -translate-x-1/2 rounded-lg bg-gray-900 p-2 text-sm font-medium text-white shadow-md group-hover:block">
                       Quick look
                     </div>
                   </div>
@@ -154,8 +154,8 @@ const AdvanceProductSlider = ({ products, onQuickLook }: Props) => {
                       <HeartIcon className="h-6 w-6" />
                     </button>
 
-                    <div className="absolute bottom-full left-1/2 mb-2 hidden w-max -translate-x-1/2 rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white shadow-md group-hover:block">
-                      Add to Favorites
+                    <div className="absolute bottom-full left-1/4 mb-2 hidden w-max -translate-x-1/2 rounded-lg bg-gray-900 p-2 text-sm font-medium text-white shadow-md group-hover:block">
+                      Favorite
                     </div>
                   </div>
                 </div>
@@ -201,8 +201,8 @@ const AdvanceProductSlider = ({ products, onQuickLook }: Props) => {
                 </li>
               </ul>
 
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-1">
+              <div className="flex flex-col gap-2">
+                <div className="flex items-center gap-2">
                   {isOnSaleProduct ? (
                     <>
                       <p className="text-md line-through text-gray-500">
@@ -211,7 +211,7 @@ const AdvanceProductSlider = ({ products, onQuickLook }: Props) => {
                       <p className="text-2xl font-extrabold leading-tight text-red-600">
                         ${product.discountedPrice}
                       </p>
-                      <FireIcon className="w-6 h-6 text-red-600" />
+                      <FireIcon className=" w-6 h-6 text-red-600" />
                     </>
                   ) : (
                     <p className="text-2xl font-extrabold leading-tight text-gray-900">

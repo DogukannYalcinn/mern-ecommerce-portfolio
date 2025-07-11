@@ -43,7 +43,7 @@ const OnSaleDropdown = () => {
                 <img
                   src={`${import.meta.env.VITE_BASE_URL}/images/${product.images[0].url}`}
                   alt={product.title}
-                  className={`w-32 h-32 mx-auto object-cover transition-transform duration-500 group-hover:scale-110 group-hover:rotate-2`}
+                  className={`w-32 h-32 mx-auto object-contain transition-transform duration-500 group-hover:scale-110 group-hover:rotate-2`}
                 />
               </div>
 

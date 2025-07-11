@@ -1,14 +1,17 @@
 import { useState, useRef, useEffect } from "react";
 import { ProductType } from "@types";
-import CaretRightIcon from "@icons/CaretRightIcon.tsx";
-import CaretLeftIcon from "@icons/CaretLeftIcon.tsx";
 import CartToggleButton from "@components/ui/CartToggleButton.tsx";
+import CarouselArrows from "@components/ui/CarouselArrows.tsx";
+import Modal from "@components/ui/Modal.tsx";
 
 interface Props {
-  product: ProductType;
+  product: ProductType | null | undefined;
+  onCloseQuickView: () => void;
 }
 
-const ProductCartQuickView = ({ product }: Props) => {
+const ProductCartQuickView = ({ product, onCloseQuickView }: Props) => {
+  if (!product) return null;
+
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -45,96 +48,82 @@ const ProductCartQuickView = ({ product }: Props) => {
   const isOnSale = product.discountedPrice > 1 && product.discountedRatio > 1;
   const paragraphs = product?.description.split("\n\n");
 
-  console.log(product);
-
   return (
-    <div className="flex items-center justify-center p-4">
-      <div className="bg-white w-full mx-4">
-        <div className="flex flex-col md:flex-row gap-4">
-          {/* Image and HeroSlider Section */}
-          <div className="md:w-1/2">
-            <div className="w-full aspect-square max-h-94 relative overflow-hidden">
+    <>
+      <Modal isOpen={true} onClose={onCloseQuickView} key={product._id}>
+        <div className="flex flex-col md:flex-row py-6 gap-4">
+          {/* Image & Thumbnails */}
+          <div className="md:w-1/2 flex flex-col gap-6 p-4 justify-center">
+            <div className="w-full aspect-square relative overflow-hidden rounded-xl shadow-sm">
               {product.images.map((image, index) => (
                 <div
                   key={image._id}
-                  className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ease-in-out ${currentIndex === index ? " opacity-100" : " opacity-0"} border-2 border-gray-200 rounded-lg`}
+                  className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ease-in-out ${
+                    currentIndex === index ? "opacity-100" : "opacity-0"
+                  }`}
                 >
                   <img
                     src={`${import.meta.env.VITE_BASE_URL}/images/${image.url}`}
                     alt={product.title}
-                    className="max-w-lg max-h-full object-contain"
+                    className="max-w-full max-h-full object-contain"
                   />
                 </div>
               ))}
             </div>
-
-            {/* Thumbnail HeroSlider */}
-            <div className="grid grid-cols-[10%_1fr_10%] items-center w-full">
-              <div>
-                <button
-                  onClick={handlePrev}
-                  className="cursor-pointer select-none"
-                >
-                  <CaretLeftIcon className="w-8 h-8 text-gray-900" />
-                </button>
-              </div>
-
-              <div
-                className="flex snap-x snap-mandatory  overflow-x-scroll scroll-smooth [scrollbar-width:none]"
-                ref={scrollContainerRef}
-              >
-                {product.images.map((img, index) => (
+            <div className="flex gap-2 justify-center items-center">
+              {/* Thumbnails */}
+              <div className="flex overflow-x-auto gap-2 scrollbar-hide">
+                {product.images.map((img, idx) => (
                   <img
                     key={img._id}
                     src={`${import.meta.env.VITE_BASE_URL}/images/${img.url}`}
-                    alt={`Image ${index}`}
-                    onClick={() => handleThumbnailClick(index)}
-                    className={`w-32 h-32 md:w-36 md:h-36 lg:w-48 lg:h-48 object-cover rounded cursor-pointer 
-                                ${currentIndex === index ? "opacity-50" : ""}`}
+                    alt={`Image ${idx}`}
+                    onClick={() => handleThumbnailClick(idx)}
+                    className={`w-16 h-16 md:w-20 md:h-20 object-contain rounded-lg cursor-pointer border-2 ${
+                      currentIndex === idx
+                        ? "border-teal-500"
+                        : "border-transparent"
+                    } transition-all duration-150`}
                   />
                 ))}
               </div>
-
-              <div>
-                <button
-                  onClick={handleNext}
-                  className="cursor-pointer select-none"
-                >
-                  <CaretRightIcon className="w-8 h-8 text-gray-900" />
-                </button>
-              </div>
+              {/* Slider Arrows */}
+              <CarouselArrows onNext={handleNext} onPrev={handlePrev} />
             </div>
           </div>
-          <div className="md:w-1/2 flex flex-col justify-between">
-            <div className="space-y-4">
-              <h2 className="text-2xl font-semibold mb-2 capitalize ">
-                {product.title}
-              </h2>
-
-              <h4 className="font-bold capitalize text-gray-500">
-                {product.brand}{" "}
-              </h4>
-
+          {/* Product Info */}
+          <div className="md:w-1/2 flex flex-col justify-between p-6 gap-6">
+            <div className="space-y-3">
+              <h2 className="text-2xl font-bold capitalize">{product.title}</h2>
+              <div className="flex items-center gap-2">
+                <span className="text-gray-500 capitalize">
+                  {product.brand}
+                </span>
+                {isOnSale && (
+                  <span className="ml-2 bg-pink-100 text-pink-700 px-2 py-0.5 rounded text-xs font-semibold uppercase">
+                    On Sale
+                  </span>
+                )}
+              </div>
               {isOnSale ? (
                 <div className="flex items-center gap-2">
-                  <div className="text-gray-500 line-through">
+                  <span className="text-gray-400 line-through">
                     ${product.price.toFixed(2)}
-                  </div>
-                  <p className="text-2xl font-bold text-red-600">
+                  </span>
+                  <span className="text-2xl font-extrabold text-red-600">
                     ${product.discountedPrice.toFixed(2)}
-                  </p>
+                  </span>
                 </div>
               ) : (
-                <div className="text-2xl font-bold text-gray-900">
+                <div className="text-2xl font-extrabold text-gray-900">
                   ${product.price.toFixed(2)}
                 </div>
               )}
-
               {paragraphs &&
-                paragraphs.map((paragraph, index) => (
+                paragraphs.map((paragraph, idx) => (
                   <p
-                    key={index}
-                    className="space-y-4 text-gray-800 text-base leading-relaxed capitalize"
+                    key={idx}
+                    className="text-gray-800 text-base leading-relaxed capitalize"
                   >
                     {paragraph}
                   </p>
@@ -143,8 +132,8 @@ const ProductCartQuickView = ({ product }: Props) => {
             <CartToggleButton productId={product._id} />
           </div>
         </div>
-      </div>
-    </div>
+      </Modal>
+    </>
   );
 };
 

@@ -9,7 +9,6 @@ import useProductContext from "@hooks/useProductContext.ts";
 import TruckIcon from "@icons/TruckIcon.tsx";
 import BestPriceIcon from "@icons/BestPriceIcon.tsx";
 import CartToggleButton from "@components/ui/CartToggleButton.tsx";
-import Modal from "@components/ui/Modal.tsx";
 import ProductCartQuickView from "@components/products/ProductCartQuickView.tsx";
 
 type Props = {
@@ -27,9 +26,10 @@ const productCartGrid = ({ products }: Props) => {
   return (
     <>
       {selectedProduct && (
-        <Modal isOpen={true} onClose={() => setSelectedProduct(null)}>
-          <ProductCartQuickView product={selectedProduct} />
-        </Modal>
+        <ProductCartQuickView
+          product={selectedProduct}
+          onCloseQuickView={() => setSelectedProduct(null)}
+        />
       )}
       <div className="mb-4 grid gap-4 sm:grid-cols-2 md:mb-8 lg:grid-cols-3 xl:grid-cols-4">
         {products.map((product) => {

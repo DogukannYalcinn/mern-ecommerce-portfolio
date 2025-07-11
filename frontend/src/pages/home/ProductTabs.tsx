@@ -6,13 +6,15 @@ import { ProductType, CategoryType } from "@types";
 
 const ProductTabs = () => {
   const [tabProductsList, setTabProductsList] = useState<ProductType[]>([]);
-  const [currentCategory, setCurrentCategory] = useState<CategoryType | null>(null);
+  const [currentCategory, setCurrentCategory] = useState<CategoryType | null>(
+    null,
+  );
   const [pickedCategories, setPickedCategories] = useState<CategoryType[]>([]);
 
   const { categories } = useProductContext().state.filters;
 
   const displayedProducts = tabProductsList.filter((prd) =>
-      currentCategory ? prd.categoryIds.includes(currentCategory._id) : false,
+    currentCategory ? prd.categoryIds.includes(currentCategory._id) : false,
   );
 
   useEffect(() => {
@@ -20,8 +22,8 @@ const ProductTabs = () => {
 
     const childCategories = categories.flatMap((c) => c.children);
     const shuffled = childCategories
-        .sort(() => Math.random() - 0.5)
-        .slice(0, 4);
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 4);
 
     setPickedCategories(shuffled);
     setCurrentCategory(shuffled[0]);
@@ -31,16 +33,16 @@ const ProductTabs = () => {
     const fetchProducts = async () => {
       try {
         const productResults = await Promise.all(
-            pickedSlugs.map((slug) =>
-                productApi.fetchProducts({ categorySlugs: [slug], limit: 10 }),
-            ),
+          pickedSlugs.map((slug) =>
+            productApi.fetchProducts({ categorySlugs: [slug], limit: 10 }),
+          ),
         );
 
         const allProducts = productResults.flatMap((res) => res.products);
 
         const uniqueProductsMap = new Map<string, ProductType>();
         allProducts.forEach((product) =>
-            uniqueProductsMap.set(product._id, product),
+          uniqueProductsMap.set(product._id, product),
         );
 
         setTabProductsList(Array.from(uniqueProductsMap.values()));
@@ -60,7 +62,7 @@ const ProductTabs = () => {
             Explore Our Products
           </h2>
           <p className="mb-5 font-light text-gray-500 sm:text-xl">
-            Here at Plasarf we focus on markets where technology, innovation,
+            Here at VoltBuy we focus on markets where technology, innovation,
             and capital can unlock long-term value and drive economic growth.
           </p>
         </div>

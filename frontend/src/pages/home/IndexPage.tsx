@@ -14,7 +14,9 @@ const IndexPage = () => {
       <HeroSlider />
       <ChildCategories />
       <HeroBanner />
+
       {/*<CartSlider />*/}
+
       <BestSellers />
       <OnSale />
       <NewArrivals />

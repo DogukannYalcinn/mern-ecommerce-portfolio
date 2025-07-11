@@ -1,6 +1,5 @@
 import { useState } from "react";
 import useProductContext from "@hooks/useProductContext.ts";
-import Modal from "@components/ui/Modal.tsx";
 import AdvanceProductSlider from "@components/products/AdvanceProductSlider.tsx";
 import { ProductType } from "@types";
 import ProductCartQuickView from "@components/products/ProductCartQuickView.tsx";
@@ -22,12 +21,10 @@ const BestSellers = () => {
   return (
     <>
       {selectedProduct && (
-        <Modal
-          isOpen={!!selectedProduct}
-          onClose={() => setSelectedProduct(null)}
-        >
-          <ProductCartQuickView product={selectedProduct} />
-        </Modal>
+        <ProductCartQuickView
+          product={selectedProduct}
+          onCloseQuickView={() => setSelectedProduct(null)}
+        />
       )}
 
       <section className="sm:min-h-screen bg-gray-50 overflow-hidden flex flex-col items-center md:justify-center">
@@ -37,7 +34,7 @@ const BestSellers = () => {
               Best Sellers
             </h2>
             <p className="font-light text-gray-500 sm:text-xl">
-              Here at Plasarf we focus on markets where technology, innovation,
+              Here at VoltBuy we focus on markets where technology, innovation,
               and capital can unlock long-term value and drive economic growth.
             </p>
           </div>

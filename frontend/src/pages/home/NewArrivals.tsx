@@ -12,7 +12,7 @@ const NewArrivals = () => {
               New Arrivals
             </h2>
             <p className="font-light text-gray-500 sm:text-xl">
-              Here at Plasarf we focus on markets where technology, innovation,
+              Here at VoltBuy we focus on markets where technology, innovation,
               and capital can unlock long-term value and drive economic growth.
             </p>
           </div>

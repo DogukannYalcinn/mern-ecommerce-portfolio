@@ -88,7 +88,7 @@ const TodayDeals = () => {
                 Today's Deal
               </h2>
               <p className="mb-5 font-light text-gray-500 sm:text-xl">
-                Here at Flowbite we focus on markets where technology,
+                Here at VoltBuy we focus on markets where technology,
                 innovation, and capital can unlock long-term value and drive
                 economic growth.
               </p>
@@ -156,7 +156,7 @@ const TodayDeals = () => {
                       )}
                     </div>
 
-                    <p className="text-sm text-gray-600 line-clamp-1  mb-4">
+                    <p className="text-sm text-gray-600 line-clamp-1  mb-4 first-letter:uppercase">
                       {product.description}
                     </p>
 

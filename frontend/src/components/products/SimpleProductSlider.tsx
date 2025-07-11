@@ -1,7 +1,6 @@
 import { useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { ProductType } from "@types";
-import Modal from "@components/ui/Modal.tsx";
 import ProductCartQuickView from "./ProductCartQuickView.tsx";
 import useProductContext from "@hooks/useProductContext.ts";
 import StarIcon from "@icons/StarIcon.tsx";
@@ -17,7 +16,6 @@ type Props = {
 };
 const SimpleProductSlider = ({ products }: Props) => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<ProductType | null>(
     null,
   );
@@ -58,20 +56,17 @@ const SimpleProductSlider = ({ products }: Props) => {
     if (!_id) return;
     const selectedProduct = products.find((prd) => prd._id === _id);
     if (!selectedProduct) return;
-    setIsModalOpen(true);
     setSelectedProduct(selectedProduct);
-  };
-
-  const onClose = () => {
-    setIsModalOpen(false);
   };
 
   return (
     <>
-      <Modal isOpen={isModalOpen} onClose={onClose}>
-        {selectedProduct && <ProductCartQuickView product={selectedProduct} />}
-        {/*{selectedProduct && (<InfiniteSliderTest product={selectedProduct}/>)}*/}
-      </Modal>
+      {selectedProduct && (
+        <ProductCartQuickView
+          product={selectedProduct}
+          onCloseQuickView={() => setSelectedProduct(null)}
+        />
+      )}
 
       <div className="animate-slideDown">
         <div className="space-y-10">
@@ -97,8 +92,9 @@ const SimpleProductSlider = ({ products }: Props) => {
               return (
                 <div
                   key={product._id}
-                  className={` group snap-start flex flex-col gap-2 transition-shadow duration-300 p-2`}
+                  className={` group snap-start flex flex-col gap-4 transition-shadow duration-300 p-2`}
                 >
+                  {/*Product Images*/}
                   <div className="relative group w-full h-48 z-0 cursor-pointer overflow-hidden">
                     {isOnSaleProduct && (
                       <div className="absolute left-0 top-0 flex items-center p-2 bg-red-500 rounded-full animate-pulse text-white text-sm font-medium z-10">
@@ -135,6 +131,27 @@ const SimpleProductSlider = ({ products }: Props) => {
                       </>
                     )}
                   </div>
+                  {/*Action Buttons*/}
+                  <div className="flex justify-end gap-2">
+                    <button
+                      type="button"
+                      onClick={() => toggleFavorite(product._id)}
+                      className={`rounded-lg p-2 transition-all duration-200 ease-in-out ${isFavoriteProduct ? " text-red-500" : " text-gray-500 hover:text-red-500 hover:scale-110"} hover:bg-gray-300`}
+                    >
+                      <span className="sr-only">Add to Favorites</span>
+                      <HeartIcon className="h-6 w-6" />
+                    </button>
+
+                    <button
+                      type="button"
+                      className={`rounded-lg p-2 transition-all duration-200 ease-in-out hover:bg-gray-300`}
+                      onClick={() => handleSelectedProduct(product._id)}
+                    >
+                      <span className="sr-only">Quick look</span>
+                      <EyeIcon className="h-6 w-6" />
+                    </button>
+                  </div>
+                  {/*Product Title*/}
                   <NavLink to={`/products/${product.slug}`}>
                     <h3
                       className={`text-lg font-semibold capitalize hover:underline cursor-pointer text-gray-900 truncate overflow-hidden whitespace-nowrap`}
@@ -142,6 +159,7 @@ const SimpleProductSlider = ({ products }: Props) => {
                       {product.title}
                     </h3>
                   </NavLink>
+                  {/*Review , Price , Add Button*/}
                   <div className="flex flex-col gap-2">
                     <div className="flex items-center justify-between">
                       <div className="flex gap-1">
@@ -151,7 +169,7 @@ const SimpleProductSlider = ({ products }: Props) => {
                           }).map((_, index) => (
                             <StarIcon
                               key={index}
-                              className="h-4 w-4 text-yellow-400 fill-yellow-400"
+                              className="h-4 w-4 text-yellow-400"
                             />
                           ))}
                         </div>
@@ -163,39 +181,22 @@ const SimpleProductSlider = ({ products }: Props) => {
                           ({product.totalReviews})
                         </p>
                       </div>
-                      <div className="flex gap-1">
-                        <button
-                          type="button"
-                          onClick={() => toggleFavorite(product._id)}
-                          className={`rounded-lg p-2 transition-all duration-200 ease-in-out ${isFavoriteProduct ? " text-red-500" : " text-gray-500 hover:text-red-500 hover:scale-110"} hover:bg-gray-100`}
-                        >
-                          <span className="sr-only">Add to Favorites</span>
-                          <HeartIcon className="h-5 w-5" />
-                        </button>
-
-                        <button
-                          type="button"
-                          className="rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900"
-                          onClick={() => handleSelectedProduct(product._id)}
-                        >
-                          <span className="sr-only">Quick look</span>
-                          <EyeIcon className="h-5 w-5" />
-                        </button>
-                      </div>
                     </div>
 
                     <div className="flex flex-col gap-2">
                       <div className="flex items-center">
                         {isOnSaleProduct ? (
                           <div className="flex gap-2  items-center w-full ">
-                            <span className=" text-gray-400 line-through">
+                            <span className="text-sm md:text-lg text-gray-400 line-through">
                               ${product.price.toFixed(2)}
                             </span>
 
-                            <span className="text-2xl text-red-500 font-extrabold">
-                              ${product.discountedPrice?.toFixed(2)}
-                            </span>
-                            <FireIcon className="w-6 h-6 text-red-600" />
+                            <div className="flex gap-1 items-center">
+                              <span className="text-xl md:text-2xl text-red-500 font-extrabold">
+                                ${product.discountedPrice?.toFixed(2)}
+                              </span>
+                              <FireIcon className="w-5 h-5 text-red-600" />
+                            </div>
                           </div>
                         ) : (
                           <span className="text-2xl font-extrabold">

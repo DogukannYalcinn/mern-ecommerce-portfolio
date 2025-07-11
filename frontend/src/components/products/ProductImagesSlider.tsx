@@ -22,7 +22,7 @@ const ProductImagesSlider = ({ images }: Props) => {
         </div>
       ))}
 
-      <div className="absolute -bottom-6 flex space-x-3">
+      <div className="absolute -bottom-8 flex space-x-3">
         {images.map((_, index) => (
           <button
             key={index}

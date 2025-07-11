@@ -48,7 +48,7 @@ export default {
       animation: {
         marquee: "marquee 30s linear infinite",
         slideDown: "slideDown 1.4s ease-in-out",
-        slideInLeft: "slideInLeft 1.2s ease-out forwar-ds",
+        slideInLeft: "slideInLeft 1.2s ease-out forwards",
         slideOutRight: "slideOutRight 1s ease-in forwards",
         toastFadeIn: "toastFadeIn 0.6s ease-in-out",
         errorToastFadeIn: "errorToastFadeIn 0.6s ease-in-out",
